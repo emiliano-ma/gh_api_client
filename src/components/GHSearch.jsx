@@ -8,10 +8,9 @@ export class GHSearch extends Component {
     inputField: "",
   };
 
-  search = async (e) => {
+  search = async () => {
     let input = this.state.inputField;
     let result = await getSearch(input);
-    debugger;
     this.setState({ searchResult: result });
   };
 
@@ -19,10 +18,10 @@ export class GHSearch extends Component {
     let searchResultList;
 
     if (this.state.searchResult.length > 0) {
-      searchResultList = this.state.searchResult.items.map((item) => {
+      searchResultList = this.state.searchResult.map((item) => {
         return (
           <div data-id={item.id} data-cy={"search-result-" + item.id}>
-            <h3>{item.login}</h3>
+            <p>{item.login}</p>
           </div>
         );
       });
@@ -40,7 +39,7 @@ export class GHSearch extends Component {
         <Button onClick={this.search} data-cy="search" name="search">
           Search
         </Button>
-        {searchResultList}
+        <div>{searchResultList}</div>
       </>
     );
   }
