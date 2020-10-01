@@ -13,8 +13,10 @@ describe("User can search by GH user name", () => {
     cy.get('[data-cy="username"]').type('emiliano-ma');
     cy.get('[data-cy="search"]').click();
 
-    cy.get("[data-cy=search-result]").within(() => {
-      cy.get("[data-cy=search-result-1]").should("contain", "emiliano-ma")
+
+    cy.get("[data-cy='search-result-67980695']").within(() => {
+      cy.contains("emiliano-ma");
+
     });
   });
 
